@@ -1,0 +1,121 @@
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-size: 62.5%
+/* 16px * 62.5 = 10px = 1rem */
+
+body
+  margin: 0
+  height: 100vh
+  font-size: 1.6rem
+  font-family: Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+#root
+  height: 100%
+
+.countImages
+  margin: 5% auto
+  text-align: center
+  font-size: 3rem
+  font-weight: 700
+
+  .date
+    font-size: 3rem
+    margin-top: 1%
+    font-style: italic
+    color: brown
+    font-weight: 700
+
+.imagesContainer
+  width: 80vw
+  display: grid
+  grid-template-columns: 24% 24% 24% 24%
+  grid-template-rows: 43% 43% 43%
+  grid-column-gap: 3%
+  grid-row-gap: 5%
+  position: relative
+  margin: 10% auto
+
+  .imgContainer
+    width: 100%
+    height: 100%
+    border: 5px solid rgba(51, 51, 51, 0.6)
+    border-radius: 50%
+    transition: 0.3s all ease-in-out
+    position: relative
+
+    &:hover
+      border: 5px solid yellow
+
+    img
+      width: 100%
+      height: 100%
+      border-radius: 50%
+      transition: 0.3s all ease-in-out
+
+      &:hover
+        transform: rotate(45deg)
+
+    i
+      position: absolute
+      font-size: 2rem
+      color: rgba(51, 51, 51, 0.6)
+      top: 0
+      right: 0.5rem
+      transform: rotate(45deg)
+      transition: 0.3s all ease-in-out
+      &:hover
+        color: brown
+        transform: rotate(90deg)
+
+  .imgContainer:nth-child(4n-7)
+    border: 5px solid red
+    transition: 0.3s all ease-in-out
+
+    &:hover
+      border: 5px solid yellow
+
+  .btnReestablish
+    font-size: 3rem
+    text-transform: uppercase
+    text-align: center
+    padding-top: 10%
+    cursor: pointer
+    position: absolute
+    left: -8%
+    top: -33%
+    &:hover
+      color: brown
+
+@media screen and (max-width: 900px)
+  .imagesContainer
+    grid-template-columns: 48% 48%
+    grid-template-rows: repeat(6, 22%)
+    grid-row-gap: 2%
+
+    .imgContainer:nth-child(2n - 1)
+      border: 5px solid red
+      transition: 0.3s all ease-in-out
+    .btnReestablish
+      position: absolute
+      left: -8%
+      top: -9%
+      font-size: 2.3rem
+
+@media screen and (max-width: 500px)
+  .imagesContainer
+    grid-template-columns: 98%
+    grid-template-rows: repeat(12, 11.5%)
+    grid-row-gap: 2%
+
+    .imgContainer:nth-child(2n - 1)
+      border: 5px solid rgba(51, 51, 51, 0.6)
+      transition: 0.3s all ease-in-out
+
+    .btnReestablish
+      left: -8%
+      top: -2%
+      font-size: 1.6rem
