@@ -14,7 +14,7 @@ const BigImage = (props) => {
                 <div className="modal">
                     <div className="modalBody">
                         <img src={imgData.url} alt={`image${imgData.id}`}/>
-                        <NavLink to='/'><i className="fas fa-times"/></NavLink>
+                        <NavLink to='/Galanix_task-2'><i className="fas fa-times"/></NavLink>
                     </div>
                 </div>
             </>

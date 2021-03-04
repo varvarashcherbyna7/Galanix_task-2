@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.sass';
 import { Route, NavLink } from "react-router-dom";
 import { images } from './dataImages';
 import BigImage from "./componets/BigImage/BigImage";
 
 const App = () => {
-    let [imagesData, setImagesData] = useState([...images])
-
+    let [imagesData, setImagesData] = useState([...images]);
+    let localImageData = [];
     let date  = new Date();
 
     // формат дати ДД.ММ.ГГГГ ЧЧ:ММ
@@ -15,35 +15,40 @@ const App = () => {
 
     const onDeleteImg = (e) => {
         let data = imagesData.filter(image => image.id !== e );
-
         setImagesData(data);
-        //let images = [];
-        // Save data to localStorage
-        window.localStorage.setItem('images', JSON.stringify(data));
+
+        if (imagesData.length < 13) {
+            setImagesData(data )
+            //Save data to localStorage
+            window.localStorage.setItem('images', JSON.stringify(data));
+        }
     }
 
+    if (localStorage.length !== 0) {
+        //Get saved data from localStorage
+        JSON.parse(localStorage.getItem('images')).map((image) => localImageData.push(image));
+    }
 
-    // Get saved data from localStorage
-    let dataLocal = JSON.parse(window.localStorage.getItem('key'));
-    console.log(dataLocal);
-
-    // Remove saved data from localStorage
-    localStorage.removeItem('key');
+    const onRestore = () => {
+        // Remove saved data from localStorage
+        localStorage.removeItem('images');
+        window.location.reload()
+    }
 
     return (
         <>
             <div className="countImages">
-                { imagesData.length } { imagesData.length > 1 ?  '- кількість світлин' : '- світлина' }
+                {(localImageData.length !== 0 ? localImageData : imagesData).length } { (localImageData.length !== 0 ? localImageData : imagesData).length > 1 ?  '- кількість світлин' : '- світлина' }
                 <div className="date">
                     { dateString }
                 </div>
             </div>
             <div className="imagesContainer">
                 {
-                    imagesData.map((images) => {
+                    (localImageData.length !== 0 ? localImageData : imagesData).map((images) => {
                         return(
                             <div className="imgContainer" key={images.id}>
-                                <NavLink to={`/${images.id}`}>
+                                <NavLink to={`/Galanix_task-2/${images.id}`}>
                                     <img src={images.url} alt={`image${images.id}`}/>
                                 </NavLink>
                                 <div onClick={() => onDeleteImg(images.id)}>
@@ -53,10 +58,10 @@ const App = () => {
                         )
                     })
                 }
-                <div className="btnReestablish">Відновити</div>
+                <div className="btnReestablish" onClick={onRestore}>Відновити</div>
             </div>
 
-            <Route exact path='/:id'
+            <Route exact path='/Galanix_task-2/:id'
                    render={(props) => <BigImage {...props} imagesData={imagesData}/> } />
         </>
     )
