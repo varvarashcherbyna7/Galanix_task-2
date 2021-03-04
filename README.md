@@ -1,3 +1,25 @@
+Task 2
+
+Application link: https://varvarashcherbyna7.github.io/Galanix_task-2/
+Application code link: https://github.com/varvarashcherbyna7/Galanix_task-2
+
+1). The project is build with React JS, Hooks
+2). To run the project locally on your computer, you need:
+        - create an empty project (folder) in the code editor and write the following commands in the console:
+            - git clone https://github.com/varvarashcherbyna7/Galanix_task-2
+            - cd Galanix_task-2
+            - npm i  (to install all packages used for development)
+            - npm init (initialization of the project, information about the project is indicated)
+            - npm start (start a project)
+
+
+
+! In order to run the project locally, you need to open the folder with the project, then write the command in the console :
+		- npm install;
+
+		- npm start.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
